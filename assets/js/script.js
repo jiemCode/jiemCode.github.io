@@ -1,4 +1,3 @@
-
 // ----------
 // Navigation
 const sections = document.querySelectorAll("section");
@@ -46,6 +45,12 @@ $(document).ready(function () {
 // ------------------------------
 // Add projects items dynamically
 projects = {
+  sms: {
+    imageUrl: "assets/img/sms.png",
+    description: "#jquery #bootstrap #sweetalert #django",
+    title: "Plateforme de gestion scolaire <br> -",
+    buttonLink: "https://samaecol.pythonanywhere.com",
+  },
   asrl: {
     imageUrl: "assets/img/asrl.png",
     description: "#iptables #openvpn #dmz #squid #mailcow",
