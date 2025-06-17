@@ -1,0 +1,8 @@
+/* Dark theme */
+:root {
+  --primary: #eeeeee;
+  --secondary: #222222;
+  --main: #286dc7;
+  --theme-icon-pos: start;
+  --primary-light: #dddddd;
+}
