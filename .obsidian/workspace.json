@@ -180,14 +180,15 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "obsidian-git:Open Git source control": false
     }
   },
   "active": "34353a7ffda00de4",
   "lastOpenFiles": [
-    "2026-03-17.md",
-    "_articles/article_01.md.md",
     "blog/index.html.md",
+    "_articles/article_01.md.md",
+    "2026-03-17.md",
     "scripts/Untitled.md",
     "_articles",
     "scripts/build_blog.py",

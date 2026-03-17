@@ -22,8 +22,10 @@ jobs:
       - name: Convert Markdown to HTML
         run: python scripts/build_blog.py
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+      - name: Commit generated HTML to main
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add blog/
+          git diff --staged --quiet || git commit -m "blog: auto-generate articles"
+          git push origin main
