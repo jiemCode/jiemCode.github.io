@@ -15,19 +15,26 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }}</title>
-  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="../../assets/css/light.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
   <link rel="stylesheet" href="../blog.css">
 </head>
 <body>
-  <nav><a href="../../index.html">← Portfolio</a> / <a href="../index.html">Blog</a></nav>
-  <article>
-    <header>
-      <h1>{{ title }}</h1>
-      <p class="meta">{{ date }} · {% for tag in tags %}<span class="tag">{{ tag }}</span>{% endfor %}</p>
-      <p class="description">{{ description }}</p>
+  <div class="page">
+    <header class="topbar">
+      <a class="back" href="../../index.html">← Portfolio</a>
+      <a class="back" href="../index.html">Blog</a>
     </header>
-    <div class="content">{{ content }}</div>
-  </article>
+    <article class="post">
+      <header>
+        <p class="eyebrow">Article</p>
+        <h1>{{ title }}</h1>
+        <p class="meta">{{ date }} · {% for tag in tags %}<span class="tag">{{ tag }}</span>{% endfor %}</p>
+        <p class="description">{{ description }}</p>
+      </header>
+      <div class="content">{{ content }}</div>
+    </article>
+  </div>
 </body>
 </html>"""
 
@@ -36,13 +43,18 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <title>Blog</title>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../assets/css/light.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="blog.css">
 </head>
 <body>
-  <nav><a href="../index.html">← Portfolio</a></nav>
-  <h1>Articles</h1>
-  <div class="articles-list">
+  <div class="page">
+    <header class="topbar">
+      <a class="back" href="../index.html">← Portfolio</a>
+      <h1>Blog</h1>
+      <p class="subtitle">Dernières notes techniques et retours d'expérience</p>
+    </header>
+    <div class="articles-list">
   {% for article in articles %}
     <a href="posts/{{ article.slug }}.html" class="article-card">
       <h2>{{ article.title }}</h2>
@@ -51,6 +63,7 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
       <div>{% for tag in article.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
     </a>
   {% endfor %}
+    </div>
   </div>
 </body>
 </html>"""
@@ -98,4 +111,3 @@ with open(BLOG_INDEX, 'w') as f:
     f.write(Template(INDEX_TEMPLATE).render(articles=articles))
 
 print(f"✅ blog/index.html généré ({len(articles)} articles)")
-
