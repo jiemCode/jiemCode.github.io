@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_articles/article_01.md.md",
+                "file": "_articles/article_01.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "article_01.md"
+              "title": "article_01"
             }
           }
         ]
@@ -187,7 +187,7 @@
   "active": "34353a7ffda00de4",
   "lastOpenFiles": [
     "blog/index.html.md",
-    "_articles/article_01.md.md",
+    "_articles/article_01.md",
     "2026-03-17.md",
     "scripts/Untitled.md",
     "_articles",
