@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_articles/article_01.md",
+                "file": "blog/index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "article_01"
+              "title": "index"
             }
           }
         ]
@@ -184,10 +184,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "34353a7ffda00de4",
+  "active": "41c29395817c770c",
   "lastOpenFiles": [
-    "blog/index.html.md",
+    "blog/posts/article_01.html",
+    "blog/index.html",
     "_articles/article_01.md",
+    "blog/index.md",
     "2026-03-17.md",
     "scripts/Untitled.md",
     "_articles",
