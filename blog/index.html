@@ -3,48 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog | Notes Techniques</title>
-  <link rel="stylesheet" href="../assets/css/light.css">
+  <title>Blog</title>
+  <link id="theme-style" rel="stylesheet" href="../assets/css/light.css">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="blog.css">
 </head>
-<body>
-  <div id="progress-bar"></div>
-
+<body data-assets-prefix="../">
   <div class="page">
     <header class="topbar">
-      <div class="topbar-left">
-        <a class="back" href="../index.html">← Portfolio</a>
-        <h1>Blog</h1>
+      <a class="brand" href="../index.html"><span class="dot"></span> Maguette.dev</a>
+      <div class="top-actions">
+        <a class="back" href="../index.html">Portfolio</a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Changer de thème">
+          <img id="theme-icon" src="../assets/icons/moon.png" alt="">
+        </button>
       </div>
-      <p class="subtitle">Dernières notes techniques et retours d'expérience</p>
     </header>
-
-    <main class="articles-list">
+    <section class="hero">
+      <p class="eyebrow">Blog</p>
+      <h1>Notes & retours d'expérience</h1>
+      <p class="subtitle">Découvrez mes expérimentations DevOps, mes pipelines CI/CD et les leçons apprises en production.</p>
+    </section>
+    <div class="articles-list">
       <a href="posts/article_01.html" class="article-card">
-        <div class="card-content">
-          <p class="meta">17 Mars 2026</p>
-          <h2>Mon pipeline CI/CD sur AWS</h2>
-          <p class="description">Comment j'ai déployé FleetCom avec Jenkins et Kubernetes sur des instances EC2.</p>
-          <div class="tags">
-            <span class="tag">devops</span>
-            <span class="tag">kubernetes</span>
-            <span class="tag">aws</span>
-          </div>
-        </div>
+        <h2>Mon pipeline CI/CD sur AWS</h2>
+        <p class="meta">2026-03-17</p>
+        <p class="description">Comment j'ai déployé FleetCom avec Jenkins et Kubernetes</p>
+        <div><span class="tag">devops</span><span class="tag">kubernetes</span><span class="tag">jenkins</span></div>
       </a>
-      
-      </main>
+    </div>
   </div>
-
-  <script>
-    // Script pour la barre de progression
-    window.onscroll = function() {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      document.getElementById("progress-bar").style.width = scrolled + "%";
-    };
-  </script>
+  <script src="theme-blog.js"></script>
 </body>
 </html>

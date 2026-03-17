@@ -15,26 +15,33 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }}</title>
-  <link rel="stylesheet" href="../../assets/css/light.css">
+  <link id="theme-style" rel="stylesheet" href="../../assets/css/light.css">
   <link rel="stylesheet" href="../../assets/css/style.css">
   <link rel="stylesheet" href="../blog.css">
 </head>
-<body>
+<body data-assets-prefix="../../">
   <div class="page">
     <header class="topbar">
-      <a class="back" href="../../index.html">← Portfolio</a>
-      <a class="back" href="../index.html">Blog</a>
+      <a class="brand" href="../../index.html"><span class="dot"></span> Maguette.dev</a>
+      <div class="top-actions">
+        <a class="back" href="../../index.html">Portfolio</a>
+        <a class="back" href="../index.html">Blog</a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Changer de thème">
+          <img id="theme-icon" src="../../assets/icons/moon.png" alt="">
+        </button>
+      </div>
     </header>
+    <section class="post-hero">
+      <p class="eyebrow">Article</p>
+      <h1>{{ title }}</h1>
+      <p class="meta">{{ date }} · {% for tag in tags %}<span class="tag">{{ tag }}</span>{% endfor %}</p>
+      <p class="description">{{ description }}</p>
+    </section>
     <article class="post">
-      <header>
-        <p class="eyebrow">Article</p>
-        <h1>{{ title }}</h1>
-        <p class="meta">{{ date }} · {% for tag in tags %}<span class="tag">{{ tag }}</span>{% endfor %}</p>
-        <p class="description">{{ description }}</p>
-      </header>
       <div class="content">{{ content }}</div>
     </article>
   </div>
+  <script src="../theme-blog.js"></script>
 </body>
 </html>"""
 
@@ -43,17 +50,26 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <title>Blog</title>
-  <link rel="stylesheet" href="../assets/css/light.css">
+  <link id="theme-style" rel="stylesheet" href="../assets/css/light.css">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="blog.css">
 </head>
-<body>
+<body data-assets-prefix="../">
   <div class="page">
     <header class="topbar">
-      <a class="back" href="../index.html">← Portfolio</a>
-      <h1>Blog</h1>
-      <p class="subtitle">Dernières notes techniques et retours d'expérience</p>
+      <a class="brand" href="../index.html"><span class="dot"></span> Maguette.dev</a>
+      <div class="top-actions">
+        <a class="back" href="../index.html">Portfolio</a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Changer de thème">
+          <img id="theme-icon" src="../assets/icons/moon.png" alt="">
+        </button>
+      </div>
     </header>
+    <section class="hero">
+      <p class="eyebrow">Blog</p>
+      <h1>Notes & retours d'expérience</h1>
+      <p class="subtitle">Découvrez mes expérimentations DevOps, mes pipelines CI/CD et les leçons apprises en production.</p>
+    </section>
     <div class="articles-list">
   {% for article in articles %}
     <a href="posts/{{ article.slug }}.html" class="article-card">
@@ -65,6 +81,7 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
   {% endfor %}
     </div>
   </div>
+  <script src="theme-blog.js"></script>
 </body>
 </html>"""
 

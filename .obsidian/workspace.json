@@ -186,9 +186,10 @@
   },
   "active": "41c29395817c770c",
   "lastOpenFiles": [
-    "blog/blog.css",
     "blog/posts/article_01.html",
     "blog/index.html",
+    "blog/theme-blog.js",
+    "blog/blog.css",
     "_articles/article_01.md",
     "blog/index.md",
     "2026-03-17.md",
