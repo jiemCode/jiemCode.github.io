@@ -21,15 +21,23 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
 </head>
 <body data-assets-prefix="../../">
   <div class="page">
-    <header class="topbar">
-      <a class="brand" href="../../index.html"><span class="dot"></span> Maguette.dev</a>
-      <div class="top-actions">
+    <nav class="blog-nav">
+      <div class="header d-flex flex-column">
+        <a class="name-link" href="../../index.html">
+          <h1 id="name">Maguette Diop</h1>
+          <small>DevOps - SysAdmin</small>
+        </a>
+      </div>
+      <div class="nav-right">
         <a class="back" href="../../index.html">Portfolio</a>
         <a class="back" href="../index.html">Blog</a>
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Changer de thème">
           <img id="theme-icon" src="../../assets/icons/moon.png" alt="">
         </button>
       </div>
+    </nav>
+    <header class="topbar">
+      <a class="brand" href="../index.html"><span class="dot"></span> Blog</a>
     </header>
     <section class="post-hero">
       <p class="eyebrow">Article</p>
@@ -56,14 +64,22 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
 </head>
 <body data-assets-prefix="../">
   <div class="page">
-    <header class="topbar">
-      <a class="brand" href="../index.html"><span class="dot"></span> Maguette.dev</a>
-      <div class="top-actions">
+    <nav class="blog-nav">
+      <div class="header d-flex flex-column">
+        <a class="name-link" href="../index.html">
+          <h1 id="name">Maguette Diop</h1>
+          <small>DevOps - SysAdmin</small>
+        </a>
+      </div>
+      <div class="nav-right">
         <a class="back" href="../index.html">Portfolio</a>
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Changer de thème">
           <img id="theme-icon" src="../assets/icons/moon.png" alt="">
         </button>
       </div>
+    </nav>
+    <header class="topbar">
+      <a class="brand" href="../index.html"><span class="dot"></span> Blog</a>
     </header>
     <section class="hero">
       <p class="eyebrow">Blog</p>
