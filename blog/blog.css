@@ -170,12 +170,11 @@ body {
 .article-card {
   text-decoration: none;
   color: inherit;
-  background: var(--surface);
-  border: 1px solid var(--surface-border);
+  background: none;
+  border: none;
   border-radius: 16px;
-  padding: 20px;
+  padding: 10px;
   box-shadow: none;
-  transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
 .article-card:hover {
