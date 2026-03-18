@@ -12,6 +12,15 @@ published: true
 ---
 ![[Figure 2 — Schéma CI_CD _ Code → GitHub → Jenkins → Docker Hub → Kubernetes → Monitor.png|Figure 2 — Schéma CI_CD _ Code → GitHub → Jenkins → Docker Hub → Kubernetes → Monitor]]
 
+- [[#1. Introduction|1. Introduction]]
+- [[#2. Architecture du Projet|2. Architecture du Projet]]
+- [[#3. Configuration de l’Infrastructure|3. Configuration de l’Infrastructure]]
+- [[#5. Déploiement Kubernetes|5. Déploiement Kubernetes]]
+- [[#4. Pipeline CI/CD Jenkins|4. Pipeline CI/CD Jenkins]]
+- [[#6. Monitoring — Prometheus et Grafana|6. Monitoring — Prometheus et Grafana]]
+- [[#7. Résultats et Validation|7. Résultats et Validation]]
+- [[#8. Conclusion|8. Conclusion]]
+
 # 1. Introduction
 
 Ce rapport décrit la conception et la mise en œuvre d’un pipeline complet d’Intégration Continue et de Déploiement Continu (CI/CD) pour l’application **Fleetcom API**, déployée sur une infrastructure cloud basée sur AWS.
@@ -176,7 +185,8 @@ sudo chown -R jenkins:jenkins /var/lib/jenkins/.kube
 | 32000 | Grafana                          |
 | 32001 | Prometheus                       |
 <div class="page-break" style="page-break-before: always;"></div>
-  
+
+
 # 4. Pipeline CI/CD Jenkins
 ## 4.1 Configuration du job Jenkins
 
