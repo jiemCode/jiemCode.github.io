@@ -42,8 +42,8 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
     <section class="post-hero">
       <p class="eyebrow">Article</p>
       <h1>{{ title }}</h1>
-      <p class="meta">{{ date }} · {% for tag in tags %}<span class="tag">{{ tag }}</span>{% endfor %}</p>
       <p class="description">{{ description }}</p>
+      <p class="meta"><span class="date">{{ date }}</span>{% for tag in tags %}<span class="tag">{{ tag }}</span>{% endfor %}</p>
     </section>
     <article class="post">
       <div class="content">{{ content }}</div>

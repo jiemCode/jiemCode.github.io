@@ -174,14 +174,12 @@ body {
   border: 1px solid var(--surface-border);
   border-radius: 16px;
   padding: 20px;
-  box-shadow: var(--shadow);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  box-shadow: none;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
 .article-card:hover {
-  transform: translateY(-4px);
   border-color: var(--main);
-  box-shadow: 0 12px 30px rgba(40, 109, 199, 0.18);
 }
 
 .article-card h2 {
@@ -191,9 +189,18 @@ body {
 }
 
 .meta {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   color: var(--muted);
-  margin-bottom: 8px;
+  margin: 0 0 8px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.meta .date {
+  font-weight: 600;
+  color: var(--primary);
 }
 
 .description {
@@ -222,6 +229,9 @@ body {
   border: 1px solid var(--surface-border);
   border-radius: 16px;
   box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .post-hero h1 {
