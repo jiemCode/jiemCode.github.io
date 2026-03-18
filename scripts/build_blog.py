@@ -11,7 +11,10 @@ BLOG_INDEX   = 'blog/index.html'
 IMAGES_SRC = '_articles/images'
 IMAGES_DST = 'blog/images'
 
-# Copier toutes les images vers blog/images/
+# Ajoute cette ligne AVANT la boucle de copie
+os.makedirs(IMAGES_DST, exist_ok=True)
+
+# Ensuite la boucle
 if os.path.exists(IMAGES_SRC):
     for f in os.listdir(IMAGES_SRC):
         shutil.copy2(os.path.join(IMAGES_SRC, f), os.path.join(IMAGES_DST, f))
