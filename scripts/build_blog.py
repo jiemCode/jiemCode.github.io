@@ -1,4 +1,4 @@
-import os, json
+import os, json, shutil
 import frontmatter
 import markdown
 from jinja2 import Template
@@ -7,6 +7,14 @@ from datetime import datetime
 ARTICLES_DIR = '_articles'
 OUTPUT_DIR   = 'blog/posts'
 BLOG_INDEX   = 'blog/index.html'
+
+IMAGES_SRC = '_articles/images'
+IMAGES_DST = 'blog/images'
+
+# Copier toutes les images vers blog/images/
+if os.path.exists(IMAGES_SRC):
+    for f in os.listdir(IMAGES_SRC):
+        shutil.copy2(os.path.join(IMAGES_SRC, f), os.path.join(IMAGES_DST, f))
 
 # Template HTML d'un article (adapte les couleurs à ton portfolio)
 ARTICLE_TEMPLATE = """<!DOCTYPE html>
