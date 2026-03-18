@@ -1,4 +1,4 @@
-import os, json, shutil
+import os, re, json, shutil
 import frontmatter
 import markdown
 from jinja2 import Template
@@ -7,19 +7,36 @@ from datetime import datetime
 ARTICLES_DIR = '_articles'
 OUTPUT_DIR   = 'blog/posts'
 BLOG_INDEX   = 'blog/index.html'
+IMAGES_SRC   = '_articles/images'
+IMAGES_DST   = 'blog/images'
 
-IMAGES_SRC = '_articles/images'
-IMAGES_DST = 'blog/images'
-
-# Ajoute cette ligne AVANT la boucle de copie
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 os.makedirs(IMAGES_DST, exist_ok=True)
 
-# Ensuite la boucle
+# ── Copier les images vers blog/images/ ───────────────────────────────────────
 if os.path.exists(IMAGES_SRC):
     for f in os.listdir(IMAGES_SRC):
-        shutil.copy2(os.path.join(IMAGES_SRC, f), os.path.join(IMAGES_DST, f))
+        src_path = os.path.join(IMAGES_SRC, f)
+        dst_path = os.path.join(IMAGES_DST, f)
+        if os.path.isfile(src_path):
+            shutil.copy2(src_path, dst_path)
+            print(f"📸 {f}")
 
-# Template HTML d'un article (adapte les couleurs à ton portfolio)
+# ── Convertir la syntaxe Obsidian ![[image.png|caption]] → HTML ───────────────
+def convert_obsidian_images(text):
+    pattern = r'!\[\[([^\]|]+?)(?:\|([^\]]*))?\]\]'
+    def replace(m):
+        filename = m.group(1).strip()
+        caption  = m.group(2).strip() if m.group(2) else ''
+        return (
+            f'<figure class="article-figure">'
+            f'<img src="../images/{filename}" alt="{caption}" style="max-width:100%;border-radius:6px">'
+            f'{"<figcaption>" + caption + "</figcaption>" if caption else ""}'
+            f'</figure>'
+        )
+    return re.sub(pattern, replace, text)
+
+# ── Templates HTML ────────────────────────────────────────────────────────────
 ARTICLE_TEMPLATE = """<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -54,7 +71,10 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
       <p class="eyebrow">Article</p>
       <h1>{{ title }}</h1>
       <p class="description">{{ description }}</p>
-      <p class="meta"><span class="date">{{ date }}</span>{% for tag in tags %}<span class="tag">{{ tag }}</span>{% endfor %}</p>
+      <p class="meta">
+        <span class="date">{{ date }}</span>
+        {% for tag in tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+      </p>
     </section>
     <article class="post">
       <div class="content">{{ content }}</div>
@@ -98,21 +118,21 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
       <p class="subtitle">Découvrez mes expérimentations DevOps, mes pipelines CI/CD et les leçons apprises en production.</p>
     </section>
     <div class="articles-list">
-  {% for article in articles %}
-    <a href="posts/{{ article.slug }}.html" class="article-card">
-      <h2>{{ article.title }}</h2>
-      <p class="meta">{{ article.date }}</p>
-      <p>{{ article.description }}</p>
-      <div>{% for tag in article.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
-    </a>
-  {% endfor %}
+      {% for article in articles %}
+      <a href="posts/{{ article.slug }}.html" class="article-card">
+        <h2>{{ article.title }}</h2>
+        <p class="meta">{{ article.date }}</p>
+        <p>{{ article.description }}</p>
+        <div>{% for tag in article.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
+      </a>
+      {% endfor %}
     </div>
   </div>
   <script src="theme-blog.js"></script>
 </body>
 </html>"""
 
-os.makedirs(OUTPUT_DIR, exist_ok=True)
+# ── Génération des articles ───────────────────────────────────────────────────
 articles = []
 
 for filename in os.listdir(ARTICLES_DIR):
@@ -123,13 +143,22 @@ for filename in os.listdir(ARTICLES_DIR):
 
     # Ignorer les articles non publiés
     if not post.get('published', False):
+        print(f"⏭️  Ignoré (non publié) : {filename}")
         continue
 
-    slug    = filename.replace('.md', '')
-    content = markdown.markdown(post.content, extensions=['fenced_code', 'tables', 'toc'])
-    date    = str(post.get('date', ''))[:10]
+    slug = filename.replace('.md', '')
+    date = str(post.get('date', ''))[:10]
 
-    # Générer le HTML de l'article
+    # 1. Convertir ![[image.png|caption]] → <figure><img>
+    raw_content = convert_obsidian_images(post.content)
+
+    # 2. Convertir Markdown → HTML
+    content = markdown.markdown(
+        raw_content,
+        extensions=['fenced_code', 'tables', 'toc', 'nl2br']
+    )
+
+    # 3. Générer le fichier HTML de l'article
     html = Template(ARTICLE_TEMPLATE).render(
         title=post.get('title', slug),
         date=date,
@@ -137,21 +166,24 @@ for filename in os.listdir(ARTICLES_DIR):
         tags=post.get('tags', []),
         content=content
     )
-    with open(f"{OUTPUT_DIR}/{slug}.html", 'w') as f:
+
+    out_path = os.path.join(OUTPUT_DIR, f"{slug}.html")
+    with open(out_path, 'w', encoding='utf-8') as f:
         f.write(html)
 
     articles.append({
-        'slug': slug, 'title': post.get('title', slug),
-        'date': date, 'description': post.get('description', ''),
-        'tags': post.get('tags', [])
+        'slug':        slug,
+        'title':       post.get('title', slug),
+        'date':        date,
+        'description': post.get('description', ''),
+        'tags':        post.get('tags', [])
     })
     print(f"✅ {slug}.html généré")
 
-# Trier par date décroissante
+# ── Génération de l'index du blog ─────────────────────────────────────────────
 articles.sort(key=lambda x: x['date'], reverse=True)
 
-# Générer l'index du blog
-with open(BLOG_INDEX, 'w') as f:
+with open(BLOG_INDEX, 'w', encoding='utf-8') as f:
     f.write(Template(INDEX_TEMPLATE).render(articles=articles))
 
-print(f"✅ blog/index.html généré ({len(articles)} articles)")
+print(f"\n✅ blog/index.html généré ({len(articles)} article(s))")

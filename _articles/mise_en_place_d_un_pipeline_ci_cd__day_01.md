@@ -14,7 +14,7 @@ published: true
 
 # 1. Introduction
 
-Ce rapport décrit la conception et la mise en œuvre d’un pipeline complet d’Intégration Continue et de Déploiement Continu (CI/CD) pour l’application **FleetCom**, déployée sur une infrastructure cloud basée sur AWS.
+Ce rapport décrit la conception et la mise en œuvre d’un pipeline complet d’Intégration Continue et de Déploiement Continu (CI/CD) pour l’application **Fleetcom API**, déployée sur une infrastructure cloud basée sur AWS.
 
 L’objectif du projet est d’automatiser l’ensemble du cycle de vie de l’application, depuis l’intégration du code source jusqu’à son déploiement en production. L’automatisation permet de réduire les interventions manuelles, d’améliorer la fiabilité des déploiements et d’accélérer la livraison de nouvelles versions.
 
