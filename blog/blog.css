@@ -170,11 +170,12 @@ body {
 .article-card {
   text-decoration: none;
   color: inherit;
-  background: none;
-  border: none;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
   border-radius: 16px;
-  padding: 10px;
+  padding: 20px;
   box-shadow: none;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
 .article-card:hover {
@@ -239,11 +240,10 @@ body {
 }
 
 .post {
-  background: var(--surface);
-  border-radius: 16px;
-  padding: 26px;
-  border: 1px solid var(--surface-border);
-  box-shadow: var(--shadow);
+  background: none;
+  color: inherit;
+  padding: 15px;
+  border: none;
 }
 
 .post .description {
