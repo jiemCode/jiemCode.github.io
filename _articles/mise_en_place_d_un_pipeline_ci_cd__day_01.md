@@ -117,6 +117,9 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 ![[Figure 3 — Interface Jenkins opérationnelle sur ec2-ci.png|Figure 3 — Interface Jenkins opérationnelle sur ec2-ci|717x303]]
 <div class="page-break" style="page-break-before: always;"></div>
 
+->
+
+->
 ## 3.2 Instance ec2-k8s — Serveur Kubernetes
 
 L’instance **ec2-k8s** exécute le cluster Kubernetes basé sur **Minikube** avec le driver Docker. Minikube crée un cluster Kubernetes à nœud unique fonctionnant dans un conteneur Docker.

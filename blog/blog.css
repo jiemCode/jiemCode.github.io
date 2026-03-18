@@ -266,6 +266,20 @@ body {
 
 .content p {
   margin: 0 0 16px;
+  margin-bottom: 1.2em;
+}
+
+.content h1, .content h2, .content h3 {
+    margin-top: 1.8em;
+    margin-bottom: 0.6em;
+}
+
+.content ul, .content ol {
+    margin-bottom: 1em;
+}
+
+.content li {
+    margin-bottom: 0.4em;
 }
 
 .content code {

@@ -138,6 +138,12 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
 # ── Génération des articles ───────────────────────────────────────────────────
 articles = []
 
+def preserve_blank_lines(text):
+    """Convertit les lignes vides multiples en <br> pour les préserver."""
+    # Remplace 2+ lignes vides par un paragraphe vide explicite
+    text = re.sub(r'\n{3,}', '\n\n&nbsp;\n\n', text)
+    return text
+
 for filename in os.listdir(ARTICLES_DIR):
     if not filename.endswith('.md'):
         continue
@@ -155,7 +161,10 @@ for filename in os.listdir(ARTICLES_DIR):
     # 1. Convertir ![[image.png|caption]] → <figure><img>
     raw_content = convert_obsidian_images(post.content)
 
-    # 2. Convertir Markdown → HTML
+    # 3. Preserve blank lines
+    raw_content = preserve_blank_lines(raw_content)
+
+    # 3. Convertir Markdown → HTML
     content = markdown.markdown(
         raw_content,
         extensions=[
