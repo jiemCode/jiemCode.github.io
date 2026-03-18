@@ -46,6 +46,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
   <link id="theme-style" rel="stylesheet" href="../../assets/css/light.css">
   <link rel="stylesheet" href="../../assets/css/style.css">
   <link rel="stylesheet" href="../blog.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 </head>
 <body data-assets-prefix="../../">
   <div class="page">
@@ -81,6 +82,8 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
     </article>
   </div>
   <script src="../theme-blog.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
 </body>
 </html>"""
 
@@ -155,7 +158,18 @@ for filename in os.listdir(ARTICLES_DIR):
     # 2. Convertir Markdown → HTML
     content = markdown.markdown(
         raw_content,
-        extensions=['fenced_code', 'tables', 'toc', 'nl2br']
+        extensions=[
+            'fenced_code',
+            'codehilite', 
+            'tables',
+            'toc',
+            'nl2br'
+        ],
+        extension_configs={
+            'codehilite': {
+                'use_pygments': False
+            }
+        }
     )
 
     # 3. Générer le fichier HTML de l'article
