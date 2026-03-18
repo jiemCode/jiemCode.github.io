@@ -81,7 +81,7 @@ Les composants suivants ont été installés :
 
 * OpenJDK 21 (pré-requis Jenkins)
 * Jenkins LTS depuis le dépôt officiel
-* Docker CE pour la construction des images
+* Docker pour la construction des images
 * kubectl pour l’administration du cluster Kubernetes
 <div class="page-break" style="page-break-before: always;"></div>
 
