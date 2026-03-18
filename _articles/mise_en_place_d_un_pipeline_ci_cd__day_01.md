@@ -349,7 +349,7 @@ spec:
     - protocol: TCP
       port: 80                    # Internal cluster port
       targetPort: 3000            # Container port
-      nodePort: 30080             # External VPS port (30000 – 32767)
+      nodePort: 30080             # External VPS port (30000–32767)
 ```
 
 ## 5.2 Premier déploiement manuel
