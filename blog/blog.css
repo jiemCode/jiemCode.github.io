@@ -339,3 +339,43 @@ section.hero,
 section.post-hero {
   min-height: auto;
 }
+
+/* ── Sommaire ──────────────────────────────────────────── */
+.toc-box {
+    background: var(--card-bg, #f8f9fa);
+    border-left: 3px solid var(--accent, #2E75B6);
+    border-radius: 6px;
+    padding: 1em 1.5em;
+    margin-bottom: 2em;
+    font-size: 0.95em;
+}
+
+.toc-title {
+    font-weight: bold;
+    margin-bottom: 0.6em;
+    font-size: 1em;
+}
+
+.toc-box ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.toc-box li {
+    margin-bottom: 0.3em;
+}
+
+/* H2 légèrement indentés */
+.toc-box ul ul {
+    padding-left: 1.2em;
+}
+
+.toc-box a {
+    text-decoration: none;
+    color: var(--accent, #2E75B6);
+}
+
+.toc-box a:hover {
+    text-decoration: underline;
+}
