@@ -20,11 +20,11 @@ body {
   font-family: "Poppins", system-ui, -apple-system, sans-serif;
   background: var(--secondary);
   color: var(--primary);
-  transition: background 0.3s ease, color 0.3s ease;
+  /* transition: background 0.3s ease, color 0.3s ease; */
 }
 
 .blog-nav {
-  width: 100vw;
+  width: 100%;
   background: var(--secondary);
   border-bottom: 1px solid var(--surface-border);
   display: flex;
