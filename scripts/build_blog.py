@@ -4,6 +4,8 @@ import markdown
 from jinja2 import Template
 from datetime import datetime
 
+TOC_DEPTH = '1'
+
 ARTICLES_DIR = '_articles'
 OUTPUT_DIR   = 'blog/posts'
 BLOG_INDEX   = 'blog/index.html'
@@ -80,7 +82,6 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
     <article class="post">
       {% if toc %}
       <div class="toc-box">
-        <p class="toc-title">Sommaire</p>
         {{ toc }}
       </div>
       {% endif %}
@@ -177,7 +178,7 @@ for filename in os.listdir(ARTICLES_DIR):
         ],
         extension_configs={
             'toc': {
-                'toc_depth': '1-2',
+                'toc_depth': TOC_DEPTH,
                 'title': 'Sommaire',
             },
             'codehilite': {
