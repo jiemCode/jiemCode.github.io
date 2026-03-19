@@ -78,6 +78,12 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
       </p>
     </section>
     <article class="post">
+      {% if toc %}
+      <div class="toc-box">
+        <p class="toc-title">Sommaire</p>
+        {{ toc }}
+      </div>
+      {% endif %}
       <div class="content">{{ content }}</div>
     </article>
   </div>
@@ -158,15 +164,10 @@ for filename in os.listdir(ARTICLES_DIR):
     slug = filename.replace('.md', '')
     date = str(post.get('date', ''))[:10]
 
-    # 1. Convertir ![[image.png|caption]] → <figure><img>
     raw_content = convert_obsidian_images(post.content)
-
-    # 3. Preserve blank lines
     raw_content = preserve_blank_lines(raw_content)
 
-    # 3. Convertir Markdown → HTML
-    content = markdown.markdown(
-        raw_content,
+    md = markdown.Markdown(
         extensions=[
             'fenced_code',
             'codehilite', 
@@ -175,11 +176,18 @@ for filename in os.listdir(ARTICLES_DIR):
             'nl2br'
         ],
         extension_configs={
+            'toc': {
+                'toc_depth': '1-2',
+                'title': 'Sommaire',
+            },
             'codehilite': {
                 'use_pygments': False
             }
         }
     )
+    
+    content = md.convert(raw_content)
+    toc = md.toc
 
     # 3. Générer le fichier HTML de l'article
     html = Template(ARTICLE_TEMPLATE).render(
@@ -187,7 +195,8 @@ for filename in os.listdir(ARTICLES_DIR):
         date=date,
         description=post.get('description', ''),
         tags=post.get('tags', []),
-        content=content
+        content=content,
+        toc=toc
     )
 
     out_path = os.path.join(OUTPUT_DIR, f"{slug}.html")
