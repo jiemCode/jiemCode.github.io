@@ -7,6 +7,10 @@
   --shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
+html, body {
+  background-color: var(--secondary);
+  font-family: 'Poppins';
+}
 * {
 padding: 0;
 margin: 0;
@@ -14,20 +18,11 @@ box-sizing: border-box;
 font-size: 1.2rem;
 }
 
-body[data-theme="dark"] {
-  --surface: #0f172a;
-  --surface-border: #1f2937;
-  --muted: #cbd5e1;
-  --shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Poppins", system-ui, -apple-system, sans-serif;
-  background: var(--secondary);
-  color: var(--primary);
-  /* transition: background 0.3s ease, color 0.3s ease; */
+html {
+font-family: "Ubuntu";
+font-size: 15px;
+scroll-behavior: smooth;
+scroll-behavior: smooth;
 }
 
 .blog-nav {
@@ -263,7 +258,7 @@ body {
 .content p {
     margin-bottom: 1.2em;
     line-height: 1.8;
-    font-size: larger;
+    font-size: large;
 }
 
 .content h1, .content h2, .content h3, .content h4 {
