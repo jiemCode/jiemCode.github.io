@@ -22,26 +22,15 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Detect article changes
-        id: changes
-        uses: dorny/paths-filter@v3
-        with:
-          filters: |
-            articles:
-              - '_articles/**'
-
       - name: Setup Python
-        if: steps.changes.outputs.articles == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
       - name: Install blog dependencies
-        if: steps.changes.outputs.articles == 'true'
         run: pip install markdown python-frontmatter jinja2 pymdown-extensions
 
-      - name: Build blog from _articles
-        if: steps.changes.outputs.articles == 'true'
+      - name: Build blog from _articles   # ← toujours exécuté
         run: python scripts/build_blog.py
 
       - name: Set up GitHub Pages
