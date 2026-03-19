@@ -7,6 +7,13 @@
   --shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
+* {
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+font-size: 1.2rem;
+}
+
 body[data-theme="dark"] {
   --surface: #0f172a;
   --surface-border: #1f2937;
@@ -256,6 +263,7 @@ body {
 .content p {
     margin-bottom: 1.2em;
     line-height: 1.8;
+    font-size: larger;
 }
 
 .content h1, .content h2, .content h3, .content h4 {
@@ -339,12 +347,11 @@ section.post-hero {
 
 /* ── Sommaire ──────────────────────────────────────────── */
 .toc-box {
-    background: var(--card-bg, #f8f9fa);
+    background: none;
     border-left: 3px solid var(--accent, #2E75B6);
-    border-radius: 6px;
     padding: 1em 1.5em;
     margin-bottom: 2em;
-    font-size: 0.95em;
+    font-size: 1.2em;
 }
 
 .toc-title {

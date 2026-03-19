@@ -51,7 +51,6 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 </head>
 <body data-assets-prefix="../../">
-  <div class="page">
     <nav class="blog-nav">
       <div class="header d-flex flex-column">
         <a class="name-link" href="../../index.html">
@@ -67,6 +66,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
         </button>
       </div>
     </nav>
+  <div class="page">
     <header class="topbar">
       <a class="brand" href="../index.html"><span class="dot"></span> Blog</a>
     </header>
@@ -104,21 +104,21 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
   <link rel="stylesheet" href="blog.css">
 </head>
 <body data-assets-prefix="../">
+  <nav class="blog-nav">
+    <div class="header d-flex flex-column">
+      <a class="name-link" href="../index.html">
+        <h1 id="name">Maguette Diop</h1>
+        <small>DevOps - SysAdmin</small>
+      </a>
+    </div>
+    <div class="nav-right">
+      <a class="back" href="../index.html">Portfolio</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Changer de thème">
+        <img id="theme-icon" src="../assets/icons/moon.png" alt="">
+      </button>
+    </div>
+  </nav>
   <div class="page">
-    <nav class="blog-nav">
-      <div class="header d-flex flex-column">
-        <a class="name-link" href="../index.html">
-          <h1 id="name">Maguette Diop</h1>
-          <small>DevOps - SysAdmin</small>
-        </a>
-      </div>
-      <div class="nav-right">
-        <a class="back" href="../index.html">Portfolio</a>
-        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Changer de thème">
-          <img id="theme-icon" src="../assets/icons/moon.png" alt="">
-        </button>
-      </div>
-    </nav>
     <header class="topbar">
       <a class="brand" href="../index.html"><span class="dot"></span> Blog</a>
     </header>
