@@ -25,6 +25,11 @@ scroll-behavior: smooth;
 scroll-behavior: smooth;
 }
 
+body {
+  display: flex;
+  flex-direction: ;
+}
+
 .blog-nav {
   width: 100vw;
   background: var(--secondary);
@@ -301,7 +306,7 @@ scroll-behavior: smooth;
 }
 
 .content th {
-    background: #f0f4f8;
+    background: var(--primary);
     font-weight: bold;
 }
 
