@@ -10,7 +10,7 @@ tags:
   - docker
 published: true
 ---
-![[Figure 2 — Schéma CI_CD _ Code → GitHub → Jenkins → Docker Hub → Kubernetes → Monitor.png|Figure 2 — Schéma CI_CD _ Code → GitHub → Jenkins → Docker Hub → Kubernetes → Monitor]]
+![[Figure 2 — Schéma CI_CD _ Code → GitHub → Jenkins → Docker Hub → Kubernetes → Monitor.png]
 
 # 1. Introduction
 
