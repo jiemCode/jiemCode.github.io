@@ -10,8 +10,7 @@ tags:
   - docker
 published: true
 ---
-![[Figure 2 — Schéma CI_CD _ Code → GitHub → Jenkins → Docker Hub → Kubernetes → Monitor.png]
-
+![[Figure 2 — Schéma CI_CD _ Code → GitHub → Jenkins → Docker Hub → Kubernetes → Monitor.png]]
 # 1. Introduction
 
 Ce rapport décrit la conception et la mise en œuvre d’un pipeline complet d’Intégration Continue et de Déploiement Continu (CI/CD) pour l’application **Fleetcom API**, déployée sur une infrastructure cloud basée sur AWS.
