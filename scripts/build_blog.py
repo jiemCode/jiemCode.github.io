@@ -239,6 +239,7 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
     <section class="hero">
       <p class="eyebrow">Blog</p>
       <h1>Notes & retours d'expérience</h1>
+      <p class="subtitle">Je partage ici mes découvertes et expérimentations en DevOps, développement et administration système.</p>
     </section>
     <div class="articles-list">
       {% for article in articles %}
