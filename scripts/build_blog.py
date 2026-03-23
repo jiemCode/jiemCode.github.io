@@ -142,7 +142,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
       const btn = document.createElement('button');
       btn.innerText = 'Copier';
       btn.style.cssText = `
-          position: absolute; top: 20px; right: 20px;
+          position: absolute; top: 22px; right: 24px;
           background: #2E75B6; color: white;
           border: none; border-radius: 4px;
           padding: 3px 10px; font-size: 12px;

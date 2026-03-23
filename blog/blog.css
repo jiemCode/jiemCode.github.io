@@ -387,3 +387,38 @@ section.post-hero {
 .toc-box a:hover {
     text-decoration: underline;
 }
+
+/* ── Scrollbars horizontales ─────────────────────────── */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #2E75B6 transparent;
+}
+
+::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2E75B6;
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #1F3864;
+}
+
+/* Supprimer les flèches */
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+/* Cibler spécifiquement les blocs de code */
+pre {
+    scrollbar-width: thin;
+    scrollbar-color: #2E75B6 transparent;
+}
