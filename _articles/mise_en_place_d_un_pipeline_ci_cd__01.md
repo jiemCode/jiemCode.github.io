@@ -46,7 +46,7 @@ Cette séparation permet d’isoler les tâches d’intégration continue de l�
 
 ## 2.2 Schéma du pipeline
 
-![[mise_en_place_d_un_pipeline_ci_cd__011.png]]
+![[mise_en_place_d_un_pipeline_ci_cd__011.png|Pipeline Ci_Cd]]
 <div class="page-break" style="page-break-before: always;"></div>
 
 Le flux de fonctionnement du pipeline est le suivant :
