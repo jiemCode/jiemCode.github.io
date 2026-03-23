@@ -197,7 +197,7 @@ Le pipeline est déclenché automatiquement après chaque **push** sur GitHub gr
 
 Le pipeline est défini dans le fichier **Jenkinsfile** suivant :
 
-```
+```yaml
 pipeline {
     agent any
 
