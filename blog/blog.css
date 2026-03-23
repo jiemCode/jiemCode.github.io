@@ -310,6 +310,7 @@ body {
 
 .content th {
     background: var(--primary);
+    color: var(--secondary);
     font-weight: bold;
 }
 
