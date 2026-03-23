@@ -49,6 +49,47 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
   <link rel="stylesheet" href="../../assets/css/style.css">
   <link rel="stylesheet" href="../blog.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+
+  <!-- Image zoom -->
+  <style>
+  .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 9999;
+      cursor: zoom-out;
+      align-items: center;
+      justify-content: center;
+  }
+  .modal-overlay.active {
+      display: flex;
+  }
+  .modal-overlay img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 6px;
+      object-fit: contain;
+      cursor: default;
+  }
+  .modal-close {
+      position: fixed;
+      top: 16px; right: 20px;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+      opacity: 0.8;
+  }
+  .modal-close:hover { opacity: 1; }
+  .article-figure img {
+      cursor: zoom-in;
+      transition: opacity 0.15s;
+  }
+  .article-figure img:hover { opacity: 0.85; }
+  </style>
 </head>
 <body data-assets-prefix="../../">
     <nav class="blog-nav">
@@ -91,6 +132,79 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
   <script src="../theme-blog.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script>hljs.highlightAll();</script>
+
+  <!-- Copy code -->
+  <script>
+  document.querySelectorAll('pre code').forEach(block => {
+      const pre = block.parentElement;
+      pre.style.position = 'relative';
+
+      const btn = document.createElement('button');
+      btn.innerText = 'Copier';
+      btn.style.cssText = `
+          position: absolute; top: 10px; right: 10px;
+          background: #2E75B6; color: white;
+          border: none; border-radius: 4px;
+          padding: 3px 10px; font-size: 12px;
+          cursor: pointer; opacity: 0;
+          transition: opacity 0.2s;
+      `;
+
+      pre.addEventListener('mouseenter', () => btn.style.opacity = '1');
+      pre.addEventListener('mouseleave', () => btn.style.opacity = '0');
+
+      btn.addEventListener('click', () => {
+          navigator.clipboard.writeText(block.innerText).then(() => {
+              btn.innerText = '✓ Copié';
+              btn.style.background = '#27ae60';
+              setTimeout(() => {
+                  btn.innerText = 'Copier';
+                  btn.style.background = '#2E75B6';
+              }, 2000);
+          });
+      });
+
+      pre.appendChild(btn);
+  });
+  </script>
+
+  <!-- Image modal -->
+  <div class="modal-overlay" id="imgModal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <img id="modalImg" src="" alt="">
+  </div>
+
+  <script>
+  const modal    = document.getElementById('imgModal');
+  const modalImg = document.getElementById('modalImg');
+  const closeBtn = document.getElementById('modalClose');
+
+  // Ouvrir au clic sur n'importe quelle image de l'article
+  document.querySelectorAll('.content img').forEach(img => {
+      img.addEventListener('click', () => {
+          modalImg.src = img.src;
+          modalImg.alt = img.alt;
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+      });
+  });
+
+  // Fermer en cliquant sur l'overlay ou le bouton ✕
+  modal.addEventListener('click', (e) => {
+      if (e.target !== modalImg) closeModal();
+  });
+  closeBtn.addEventListener('click', closeModal);
+
+  // Fermer avec Échap
+  document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+  });
+
+  function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+  }
+  </script>
 </body>
 </html>"""
 
