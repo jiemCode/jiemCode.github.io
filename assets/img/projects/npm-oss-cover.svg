@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" role="img" aria-label="Regroupement des hôtes proxy par domaine de base">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#12213a"/>
+      <stop offset="100%" stop-color="#0a1526"/>
+    </linearGradient>
+    <style>
+      .t { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+      .title { fill: #ffffff; font-size: 30px; font-weight: 700; }
+      .kicker { fill: #4d92e8; font-size: 15px; font-weight: 600; letter-spacing: .16em; }
+      .grp { fill: #1d3a63; stroke: #4d92e8; stroke-width: 2; }
+      .row { fill: #16294a; stroke: #35507d; stroke-width: 1.5; }
+      .gl { fill: #eaf1fb; font-size: 18px; font-weight: 600; }
+      .rl { fill: #9db6d6; font-size: 15px; }
+      .badge { fill: #286dc7; }
+      .bt { fill: #ffffff; font-size: 13px; font-weight: 700; }
+      .foot { fill: #7d97bb; font-size: 15px; }
+    </style>
+  </defs>
+
+  <rect width="900" height="600" fill="url(#bg2)"/>
+
+  <text class="t kicker" x="60" y="62">CONTRIBUTION OPEN SOURCE</text>
+  <text class="t title" x="60" y="102">Hôtes proxy groupés par domaine</text>
+
+  <!-- Group 1 -->
+  <rect class="grp" x="60" y="150" width="780" height="46" rx="8"/>
+  <text class="t gl" x="86" y="180">▾  example.com</text>
+  <rect class="badge" x="770" y="163" width="46" height="22" rx="11"/>
+  <text class="t bt" x="793" y="179" text-anchor="middle">3</text>
+
+  <rect class="row" x="90" y="204" width="750" height="42" rx="6"/>
+  <text class="t rl" x="116" y="231">app.example.com  →  10.0.1.20:3000</text>
+  <rect class="row" x="90" y="254" width="750" height="42" rx="6"/>
+  <text class="t rl" x="116" y="281">api.example.com  →  10.0.1.21:8080</text>
+  <rect class="row" x="90" y="304" width="750" height="42" rx="6"/>
+  <text class="t rl" x="116" y="331">docs.example.com  →  10.0.1.22:4000</text>
+
+  <!-- Group 2 -->
+  <rect class="grp" x="60" y="368" width="780" height="46" rx="8"/>
+  <text class="t gl" x="86" y="398">▾  lab.local</text>
+  <rect class="badge" x="770" y="381" width="46" height="22" rx="11"/>
+  <text class="t bt" x="793" y="397" text-anchor="middle">2</text>
+
+  <rect class="row" x="90" y="422" width="750" height="42" rx="6"/>
+  <text class="t rl" x="116" y="449">glpi.lab.local  →  10.0.2.10:80</text>
+  <rect class="row" x="90" y="472" width="750" height="42" rx="6"/>
+  <text class="t rl" x="116" y="499">wazuh.lab.local  →  10.0.2.11:443</text>
+
+  <text class="t foot" x="60" y="558">Nginx Proxy Manager · React · état initial mémoïsé · thèmes clair et sombre</text>
+</svg>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -69,8 +69,7 @@
         <div class="intro">
           <h1>Salut, je suis <span class="firstname">Maguette</span> Diop</h1>
           <p>
-            Spécialisé en systèmes d'information et
-            en gestion de données,
+            Spécialisé en systèmes d'information et en gestion de données,
             <br />je développe des compétences solides pour accompagner la
             transformation <br />numérique des entreprises. Rigoureux, proactif
             et passionné <br />par l'innovation, je mets mes connaissances au
@@ -146,7 +145,9 @@
               <div class="timeline-4 right-4">
                 <div class="card gradient-custom-4">
                   <div class="card-body p-4">
-                    <h4>Master en Systèmes d'Information et Données</h4>
+                    <h4>
+                      DIC Informatique - Systèmes d'Information et Données
+                    </h4>
                     <p class="small text-white-50 mb-4 fw-bolder">
                       2025 - Maintenant
                     </p>
@@ -171,6 +172,18 @@
         <div class="skills-container">
           <div class="skill-box">
             <div class="skill-title">
+              <h4>Cloud &amp; DevOps</h4>
+            </div>
+            <div class="skill-content">
+              <p>» Docker, Kubernetes, AWS</p>
+              <p>» IaC : Terraform, Ansible, Vault</p>
+              <p>» CI/CD avec Jenkins, GitHub Actions</p>
+              <p>» Observabilité (Grafana, Prometheus)</p>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <div class="skill-title">
               <h4>IA / Machine Learning</h4>
             </div>
             <div class="skill-content">
@@ -188,17 +201,6 @@
               <p>» Apache Spark, Pandas, NumPy</p>
               <p>» Entrepôts de données, ETL (Talend), BI</p>
               <p>» SQL, PostgreSQL, MongoDB, Cassandra</p>
-            </div>
-          </div>
-
-          <div class="skill-box">
-            <div class="skill-title">
-              <h4>Cloud &amp; DevOps</h4>
-            </div>
-            <div class="skill-content">
-              <p>» Docker, Kubernetes, AWS</p>
-              <p>» CI/CD avec Jenkins, GitHub Actions</p>
-              <p>» Observabilité (Grafana, Prometheus)</p>
             </div>
           </div>
 
@@ -226,7 +228,7 @@
                 <div class="swiper-slide">
                   <img src="assets/extra/aws_cloud_technical_cert.png" alt="" />
                 </div>
-		<div class="swiper-slide">
+                <div class="swiper-slide">
                   <img src="assets/extra/cert_nvidia_dlf.png" alt="" />
                 </div>
 
@@ -261,6 +263,24 @@
       <!-- PROJECTS SECTION STARTS -->
       <section id="projects">
         <h2 class="section-title">Projets réalisés</h2>
+        <div
+          class="project-filters"
+          role="group"
+          aria-label="Filtrer les projets"
+        >
+          <button type="button" class="filter-btn active" data-filter="all">
+            Tous
+          </button>
+          <button type="button" class="filter-btn" data-filter="cloud">
+            Cloud &amp; DevOps
+          </button>
+          <button type="button" class="filter-btn" data-filter="web">
+            Web
+          </button>
+          <button type="button" class="filter-btn" data-filter="reseau">
+            Réseau &amp; IoT
+          </button>
+        </div>
         <div class="section-projects container">
           <div
             class="row row-cols-1 row-cols-md-3 g-4"
@@ -268,6 +288,34 @@
           ></div>
         </div>
       </section>
+
+      <div
+        id="project-lightbox"
+        class="lightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Captures du projet"
+        hidden
+      >
+        <div class="lightbox-inner">
+          <div class="lightbox-bar">
+            <span class="lightbox-title"></span>
+            <button type="button" class="lightbox-close" aria-label="Fermer">
+              &times;
+            </button>
+          </div>
+          <img class="lightbox-image" src="" alt="" />
+          <div class="lightbox-nav">
+            <button type="button" class="lightbox-prev" aria-label="Précédent">
+              &#8249;
+            </button>
+            <span class="lightbox-counter"></span>
+            <button type="button" class="lightbox-next" aria-label="Suivant">
+              &#8250;
+            </button>
+          </div>
+        </div>
+      </div>
       <!-- PROJECTS SECTION ENDS -->
 
       <!-- CONTACTS SECTION STARTS -->
@@ -399,7 +447,7 @@
       $(document).ready(function () {
         const progressCircle = document.querySelector(".autoplay-progress svg");
         const progressContent = document.querySelector(
-          ".autoplay-progress span"
+          ".autoplay-progress span",
         );
         var swiper = new Swiper(".mySwiper", {
           loop: true,
