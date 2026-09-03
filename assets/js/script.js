@@ -237,7 +237,7 @@ const projects = [
       "Application de gestion d'établissement : inscriptions, notes et suivi des élèves.",
     image: "assets/img/sms.png",
     stack: ["Django", "jQuery", "Bootstrap", "SweetAlert"],
-    links: { demo: "https://samaecole.pythonanywhere.com" },
+    links: { demo: "https://schoolms.booze.pics" },
     gallery: [],
   },
   {
