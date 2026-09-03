@@ -232,7 +232,7 @@ const projects = [
   {
     id: "sms",
     category: "web",
-    title: "Plateforme de gestion scolaire",
+    title: "Plateforme de gestion scolaire : School-MS",
     subtitle:
       "Application de gestion d'établissement : inscriptions, notes et suivi des élèves.",
     image: "assets/img/sms.png",
