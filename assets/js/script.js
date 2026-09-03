@@ -259,7 +259,7 @@ const projects = [
       "Architecture réseau complète avec DMZ, pare-feu frontal et arrière, proxy filtrant et accès VPN, validée par des tests de pénétration.",
     image: "assets/img/asrl.png",
     stack: ["IPTables", "Squid", "OpenVPN", "WireGuard", "StrongSwan", "Mailcow"],
-    links: {},
+    links: { report: "assets/files/rapport-asrl.pdf" },
     gallery: [],
   },
   {
